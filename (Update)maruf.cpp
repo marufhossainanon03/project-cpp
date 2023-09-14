@@ -1,7 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Book {
+//Abstract class
+class Book { 
+
+//Encapsulation
 private:
     string title;
     string author;
@@ -15,23 +18,30 @@ public:
     double getPrice() { return price; }
 };
 
+//Abstract class
 class User {
+
+//Encapsulation
 protected:
     string username;
     string password;
 
 public:
+   
     User(string u, string p) : username(u), password(p) {}
 
     string getUsername() { return username; }
-
+    
+    //Abstraction
     virtual void displayMenu() = 0;
 };
 
+//Inheritance
 class Customer : public User {
 public:
     Customer(string u, string p) : User(u, p) {}
-
+    
+    //Polymorphism
     void displayMenu() override {
         cout << "Welcome, " << getUsername() << "! Choose an option:\n"
              << "1. View Books\n"
@@ -39,10 +49,12 @@ public:
     }
 };
 
+//Inheritance
 class Admin : public User {
 public:
     Admin(string u, string p) : User(u, p) {}
-
+    
+    //Polymorphism
     void displayMenu() override {
         cout << "Welcome, Admin " << getUsername() << "! Choose an option:\n"
              << "1. Add Book\n"
